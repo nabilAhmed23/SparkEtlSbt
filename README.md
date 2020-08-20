@@ -41,7 +41,7 @@ Example:
 `spark-submit --master localhost:7077 --jars mssql-jdbc-8.4.0.jre8.jar,mysql-connector-java-8.0.21.jar /path/to/spark-jdbc.properties "select col1, col2, col3 from table_name where col2 = 'foo'" destination_table`  
 
 Note:  
-This project was built on top of Spark 3.0.0 for Hadoop 2.7, with Scala version 2.12.11, Java 8 (u251) and sbt version 1.3.13.  
+This project was built on top of Spark 3.0.0 for Hadoop 2.7, with Scala version 2.13.3, Java 8 (u251) and sbt version 1.3.13.  
 This project uses 'FAIR' spark.scheduler.mode, which requires spark.executor.instances and spark.executor.cores to be configured before-hand.  
 This project does not configure the number of executors, assigned memory per executor, etc., assuming it will be done in the respective configuration files on the machine(s) the Spark job will be executed on.  
 This project does not support CSV files and other sources of data other than JDBC, yet.  
