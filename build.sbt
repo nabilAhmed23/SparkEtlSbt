@@ -2,7 +2,7 @@ name := "SparkEtlSbt"
 
 version := "0.1"
 
-scalaVersion := "2.13.3"
+scalaVersion := "2.12.11"
 mainClass in Compile := Some("com.spark.etl.SparkEtlMain")
 
 libraryDependencies ++= Seq(
