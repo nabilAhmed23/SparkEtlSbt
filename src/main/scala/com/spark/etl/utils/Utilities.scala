@@ -52,7 +52,7 @@ object Utilities {
   def getTableAlias(srcTable: String): String = {
     var tableName = srcTable.trim
     if (tableName.indexOf(" ") > -1 && tableName.substring(1, tableName.indexOf(" ")).toUpperCase == "SELECT") {
-      tableName = tableName.substring(tableName.lastIndexOf(" ") + 1, tableName.length)
+      tableName = tableName.substring(tableName.lastIndexOf(" ") + 1, tableName.length).trim
     }
 
     tableName

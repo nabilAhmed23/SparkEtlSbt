@@ -19,10 +19,10 @@ object SparkEtlMain {
         throw new Exception(s"Incorrect number of arguments. Expected 3 (properties file, source table, destination table), got ${args.length}")
       }
       val properties = new Properties()
-      properties.load(new FileReader(args(0)))
+      properties.load(new FileReader(args(0).trim))
 
       if (!Utilities.validateDatabaseProperties(properties)) {
-        throw new Exception(s"File ${args(0)} missing one of:" +
+        throw new Exception(s"File ${args(0).trim} missing one of:" +
           s"\n${Utilities.SRC_DRIVER_PROPERTY}" +
           s"\n${Utilities.SRC_URL_PROPERTY}" +
           s"\n${Utilities.SRC_USERNAME_PROPERTY}" +
@@ -34,7 +34,7 @@ object SparkEtlMain {
       }
 
       println("=================================================================\n")
-      println(s"File ${args(0)} properties:")
+      println(s"File ${args(0).trim} properties:")
       properties.stringPropertyNames().forEach(prop => println(s"$prop: ${properties.getProperty(prop)}"))
       println("=================================================================\n")
 
@@ -44,19 +44,19 @@ object SparkEtlMain {
       println("=================================================================\n")
 
       new EtlDataTransfer(session,
-        new DatabaseContext(properties.getProperty(Utilities.SRC_DRIVER_PROPERTY),
-          properties.getProperty(Utilities.SRC_URL_PROPERTY),
-          Utilities.addTableAlias(args(1).trim),
-          properties.getProperty(Utilities.SRC_USERNAME_PROPERTY),
-          properties.getProperty(Utilities.SRC_PASSWORD_PROPERTY)),
-        new DatabaseContext(properties.getProperty(Utilities.DEST_DRIVER_PROPERTY),
-          properties.getProperty(Utilities.DEST_URL_PROPERTY),
+        new DatabaseContext(properties.getProperty(Utilities.SRC_DRIVER_PROPERTY).trim,
+          properties.getProperty(Utilities.SRC_URL_PROPERTY).trim,
+          Utilities.addTableAlias(args(1).trim).trim,
+          properties.getProperty(Utilities.SRC_USERNAME_PROPERTY).trim,
+          properties.getProperty(Utilities.SRC_PASSWORD_PROPERTY).trim),
+        new DatabaseContext(properties.getProperty(Utilities.DEST_DRIVER_PROPERTY).trim,
+          properties.getProperty(Utilities.DEST_URL_PROPERTY).trim,
           args(2).trim,
-          properties.getProperty(Utilities.DEST_USERNAME_PROPERTY),
-          properties.getProperty(Utilities.DEST_PASSWORD_PROPERTY)))
+          properties.getProperty(Utilities.DEST_USERNAME_PROPERTY).trim,
+          properties.getProperty(Utilities.DEST_PASSWORD_PROPERTY).trim))
         .runEtl()
     } catch {
-      case e: FileNotFoundException => println(s"File not found ${args(0)}: $e")
+      case e: FileNotFoundException => println(s"File not found ${args(0).trim}: $e")
       case e: Exception => println(s"Exception thrown: $e")
     } finally {
       session.stop()
