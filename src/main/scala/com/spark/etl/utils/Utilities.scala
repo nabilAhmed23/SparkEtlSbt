@@ -14,14 +14,16 @@ object Utilities {
   val DEST_PASSWORD_PROPERTY = "destination.database.password"
 
   def validateDatabaseProperties(properties: Properties): Boolean = {
-    properties.stringPropertyNames().contains(SRC_DRIVER_PROPERTY) &&
-      properties.stringPropertyNames().contains(SRC_URL_PROPERTY) &&
-      properties.stringPropertyNames().contains(SRC_USERNAME_PROPERTY) &&
-      properties.stringPropertyNames().contains(SRC_PASSWORD_PROPERTY) &&
-      properties.stringPropertyNames().contains(DEST_DRIVER_PROPERTY) &&
-      properties.stringPropertyNames().contains(DEST_URL_PROPERTY) &&
-      properties.stringPropertyNames().contains(DEST_USERNAME_PROPERTY) &&
-      properties.stringPropertyNames().contains(DEST_PASSWORD_PROPERTY)
+    val propertyKeys = properties.stringPropertyNames()
+
+    propertyKeys.contains(SRC_DRIVER_PROPERTY) &&
+      propertyKeys.contains(SRC_URL_PROPERTY) &&
+      propertyKeys.contains(SRC_USERNAME_PROPERTY) &&
+      propertyKeys.contains(SRC_PASSWORD_PROPERTY) &&
+      propertyKeys.contains(DEST_DRIVER_PROPERTY) &&
+      propertyKeys.contains(DEST_URL_PROPERTY) &&
+      propertyKeys.contains(DEST_USERNAME_PROPERTY) &&
+      propertyKeys.contains(DEST_PASSWORD_PROPERTY)
   }
 
   def getTimeDifference(past: Date, present: Date): String = {

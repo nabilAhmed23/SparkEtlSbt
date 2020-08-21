@@ -36,9 +36,9 @@ Syntax:
 `spark-submit --master <master_url> --jars <comma_separated_jdbc_jars> <JAR_file_build> <properties_file> <source_table> <destination_table>`  
 
 Example:  
-`spark-submit --master localhost:7077 --jars mssql-jdbc-8.4.0.jre8.jar,mysql-connector-java-8.0.21.jar /path/to/spark-jdbc.properties source_table destination_table`  
+`spark-submit --master localhost:7077 --jars mssql-jdbc-8.4.0.jre8.jar,mysql-connector-java-8.0.21.jar /path/to/SparkEtlSbt.jar /path/to/spark-jdbc.properties source_table destination_table`  
 
-`spark-submit --master localhost:7077 --jars mssql-jdbc-8.4.0.jre8.jar,mysql-connector-java-8.0.21.jar /path/to/spark-jdbc.properties "select col1, col2, col3 from table_name where col2 = 'foo'" destination_table`  
+`spark-submit --master localhost:7077 --jars mssql-jdbc-8.4.0.jre8.jar,mysql-connector-java-8.0.21.jar /path/to/SparkEtlSbt.jar /path/to/spark-jdbc.properties "select col1, col2, col3 from table_name where col2 = 'foo'" destination_table`  
 
 Note:  
 This project was built on top of Spark 3.0.0 for Hadoop 2.7, with Scala version 2.12.11, Java 8 (u251) and sbt version 1.3.13.  

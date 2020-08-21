@@ -20,6 +20,7 @@ class EtlDataTransfer(session: SparkSession, srcContext: DatabaseContext, destCo
       )
     val presentRead = Calendar.getInstance().getTime
     println(s"After $tableName read: $presentRead")
+    println("=================================================================\n")
 
     val pastWrite = Calendar.getInstance().getTime
     println(s"Before ${destContext.DATABASE_TABLE} write: $pastWrite")
@@ -33,6 +34,7 @@ class EtlDataTransfer(session: SparkSession, srcContext: DatabaseContext, destCo
       )
     val presentWrite = Calendar.getInstance().getTime
     println(s"After ${destContext.DATABASE_TABLE} write: $presentWrite")
+    println("=================================================================\n")
 
     val readDifference = Utilities.getTimeDifference(pastRead, presentRead)
     println(s"$tableName read complete in $readDifference")
