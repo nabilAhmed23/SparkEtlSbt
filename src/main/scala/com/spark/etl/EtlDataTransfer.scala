@@ -5,7 +5,10 @@ import java.util.Calendar
 import com.spark.etl.utils.{DatabaseContext, Utilities}
 import org.apache.spark.sql.{SaveMode, SparkSession}
 
-class EtlDataTransfer(session: SparkSession, srcContext: DatabaseContext, destContext: DatabaseContext) extends BaseEtlDataTransfer(session, srcContext, destContext) {
+class EtlDataTransfer(override val session: SparkSession,
+                      override val srcContext: DatabaseContext,
+                      override val destContext: DatabaseContext)
+  extends BaseEtlDataTransfer(session, srcContext, destContext) {
 
   override def runEtl(): Unit = {
     val pastRead = Calendar.getInstance().getTime

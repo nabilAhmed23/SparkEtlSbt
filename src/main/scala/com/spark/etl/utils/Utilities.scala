@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit
 import java.util.{Date, Properties}
 
 object Utilities {
+
   val SRC_DRIVER_PROPERTY = "source.database.driver"
   val SRC_URL_PROPERTY = "source.database.url"
   val SRC_USERNAME_PROPERTY = "source.database.username"

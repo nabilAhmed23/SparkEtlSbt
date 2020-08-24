@@ -1,6 +1,6 @@
 name := "SparkEtlSbt"
 
-version := "0.1"
+version := "1.0"
 
 scalaVersion := "2.12.11"
 mainClass in Compile := Some("com.spark.etl.SparkEtlMain")
