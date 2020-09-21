@@ -1,4 +1,4 @@
-# SparkEtlSbt  
+# Spark ETL SBT  
 ##### ETL process between source and destination tables using Spark (in Scala)  
 
 This SBT project is used to read table data from one database and write to another using Spark JDBC.  
@@ -27,7 +27,7 @@ Example (SQL Server to MySQL):
 
 2) Source database table name:  
 The name of the database table where the data is to be read from.  
-To read data from other than a single table, a `SELECT` query can be formulated within " "  
+To read data from other than a single table, a `SELECT` query can be formulated within " ".  
 
 3) Destination database table name:  
 The name of the database table where the data is to be written to.  
