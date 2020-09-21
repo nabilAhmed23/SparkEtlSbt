@@ -1,4 +1,4 @@
-# SparkEtlSbt  
+# Spark ETL SBT  
 ##### ETL process between source and destination tables using Spark (in Scala)  
   
 This SBT project is used to read table data from one database and write to another using Spark JDBC.  
