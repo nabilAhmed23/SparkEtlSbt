@@ -28,15 +28,19 @@ object Utilities {
   }
 
   def getTimeDifference(past: Date, present: Date): String = {
-    val difference = present.getTime - past.getTime
+    var difference = present.getTime - past.getTime
     var timeDifference = ""
     if (TimeUnit.MILLISECONDS.toHours(difference) > 0) {
-      timeDifference += s"${TimeUnit.MILLISECONDS.toHours(difference)} hours, "
+      val hours = TimeUnit.MILLISECONDS.toHours(difference)
+      timeDifference += s"$hours hour(s), "
+      difference -= TimeUnit.HOURS.toMillis(hours)
     }
     if (TimeUnit.MILLISECONDS.toMinutes(difference) > 0) {
-      timeDifference += s"${TimeUnit.MILLISECONDS.toMinutes(difference)} minutes, "
+      val minutes = TimeUnit.MILLISECONDS.toMinutes(difference)
+      timeDifference += s"$minutes minute(s), "
+      difference -= TimeUnit.MINUTES.toMillis(minutes)
     }
-    timeDifference += s"${TimeUnit.MILLISECONDS.toSeconds(difference)} seconds"
+    timeDifference += s"${TimeUnit.MILLISECONDS.toSeconds(difference)} second(s)"
 
     timeDifference
   }
